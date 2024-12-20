@@ -1,34 +1,38 @@
 package services;
 
 import db.DatabaseConnection;
-import utils.InputUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import models.Donation;
+import utils.InputUtils;
 
 public class DonationService {
 
     public static void donate() {
-        String donorName = InputUtils.getString("Enter donor's name: ");
-        double amount = InputUtils.getInt("Enter donation amount: ");
-        LocalDate donationDate = LocalDate.now();
+        String donorName = InputUtils.getString("Enter your name: ");
+        double amount = InputUtils.getDouble("Enter donation amount: $");
 
+        Donation donation = new Donation(donorName, amount);
+        
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String sql = "INSERT INTO donations (donor_name, amount, donation_date) VALUES (?, ?, ?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, donorName);
-            statement.setDouble(2, amount);
-            statement.setDate(3, java.sql.Date.valueOf(donationDate));
+            String query = "INSERT INTO donations (donor_name, amount) VALUES (?, ?)";
 
-            int rowsAffected = statement.executeUpdate();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, donation.getDonorName());
+            preparedStatement.setDouble(2, donation.getAmount());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            
             if (rowsAffected > 0) {
-                System.out.println("Donation registered successfully!");
+                System.out.println("Thank you for your donation!");
+                donation.donationInfo(); 
             } else {
-                System.out.println("Failed to register the donation.");
+                System.out.println("Donation failed, please try again.");
             }
         } catch (SQLException e) {
-            System.out.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+            System.out.println("An error occurred while processing the donation.");
         }
     }
 }
