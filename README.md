@@ -108,19 +108,22 @@ Enter animal type (dog/cat): dog
 Animal registered successfully!
 Animal Name: Maddie, Type: dog, Color: brown, Age: 2
 Adopt an Animal
-
+```
+```
 2. Adopt Animal
 Enter adopter's name: John Doe
 Enter animal name to adopt: Maddie
 Animal adopted successfully by John Doe!
 Volunteer Registration
-
+```
+```
 3. Volunteer
 Enter your name: Jane Smith
 Enter your contact: janesmith@example.com
 Volunteer registered successfully!
 Make a Donation
-
+```
+```
 4. Donate
 Enter your name: Sarah Lee
 Enter donation amount: $50
