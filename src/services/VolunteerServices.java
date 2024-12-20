@@ -1,31 +1,38 @@
 package services;
 
 import db.DatabaseConnection;
-import utils.InputUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import models.Volunteer;
+import utils.InputUtils;
 
-public class VolunteerServices {
+public class VolunteerService {
 
     public static void volunteer() {
         String name = InputUtils.getString("Enter your name: ");
-        String contactInfo = InputUtils.getString("Enter your contact information: ");
-
+        String contact = InputUtils.getString("Enter your contact: ");
+        
+        Volunteer volunteer = new Volunteer(name, contact);
+        
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String sql = "INSERT INTO volunteers (name, contact_info) VALUES (?, ?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, name);
-            statement.setString(2, contactInfo);
+            String query = "INSERT INTO volunteers (name, contact) VALUES (?, ?)";
 
-            int rowsAffected = statement.executeUpdate();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, volunteer.getName());
+            preparedStatement.setString(2, volunteer.getContact());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            
             if (rowsAffected > 0) {
                 System.out.println("Thank you for volunteering!");
+                volunteer.volunteerInfo();  
             } else {
-                System.out.println("Failed to register volunteer.");
+                System.out.println("Volunteer registration failed, please try again.");
             }
         } catch (SQLException e) {
-            System.out.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+            System.out.println("An error occurred while registering as a volunteer.");
         }
     }
 }
