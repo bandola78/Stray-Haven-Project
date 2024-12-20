@@ -2,8 +2,6 @@ package main;
 
 import services.*;
 import utils.InputUtils;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class Main {
 
@@ -17,7 +15,7 @@ public class Main {
             System.out.println("3. Volunteer");
             System.out.println("4. Donate");
             System.out.println("5. Exit");
-            
+
             int choice = InputUtils.getInt("Choose an option: ");
 
             switch (choice) {
@@ -25,7 +23,9 @@ public class Main {
                     AnimalService.registerAnimal();
                     break;
                 case 2:
-                    AdoptionService.adoptAnimal();
+                    String adopterName = InputUtils.getString("Enter your name: ");
+                    String animalName = InputUtils.getString("Enter the name of the animal you're adopting: ");
+                    AdoptionService.adoptAnimal(adopterName, animalName);  
                     break;
                 case 3:
                     VolunteerService.volunteer();
@@ -34,7 +34,7 @@ public class Main {
                     DonationService.donate();
                     break;
                 case 5:
-                    running = false;  
+                    running = false;
                     System.out.println("Thank you for using Stray Haven!");
                     break;
                 default:
