@@ -9,7 +9,6 @@ import models.Animal;
 
 public class AdoptionService {
 
-    // Modify adoptAnimal to accept adopterName and animalName as arguments
     public static void adoptAnimal(String adopterName, String animalName) {
         String query = "SELECT * FROM animals WHERE name = ?";
 
