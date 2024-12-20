@@ -100,7 +100,7 @@ Use any IDE (e.g., IntelliJ IDEA, Eclipse) to run the Main.java file.
 
 ## Example Usage
 Register an Animal
-
+```
 1. Register Animal
 Enter animal name: Maddie
 Enter animal color: brown
@@ -126,8 +126,10 @@ Make a Donation
 Enter your name: Sarah Lee
 Enter donation amount: $50
 Donation of $50 made successfully!
-
+```
+```
 ## About the Developer 👋 👩‍💻
 Hi, I'm Jobelyn Bandola, the developer of Stray Connect. This project was created as part of my Database Management Systems (DBMS) final project, adhering to database design principles while contributing to Sustainable Development Goal (SDG) 15: Life on Land. Developing Stray Connect has been a rewarding experience, allowing me to refine my programming skills and explore concepts like database management, SQL queries, and logic building.
 
 Thank you for exploring my project! Stray Connect represents not just an academic milestone but also a step toward meaningful community service. I hope to continue improving and expanding this project in the future.
+```
