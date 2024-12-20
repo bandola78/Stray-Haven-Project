@@ -1,46 +1,23 @@
 package models;
 
-import java.time.LocalDate;
-
 public class Adoption {
-    private String adopterName;          
-    private StrayAnimal adoptedAnimal;   
-    private LocalDate adoptionDate;      
+    private String adopterName;
+    private Animal animal;
 
-    public Adoption(String adopterName, StrayAnimal adoptedAnimal, LocalDate adoptionDate) {
+    public Adoption(String adopterName, Animal animal) {
         this.adopterName = adopterName;
-        this.adoptedAnimal = adoptedAnimal;
-        this.adoptionDate = adoptionDate;
+        this.animal = animal;
     }
 
     public String getAdopterName() {
         return adopterName;
     }
 
-    public void setAdopterName(String adopterName) {
-        this.adopterName = adopterName;
+    public Animal getAnimal() {
+        return animal;
     }
 
-    public StrayAnimal getAdoptedAnimal() {
-        return adoptedAnimal;
-    }
-
-    public void setAdoptedAnimal(StrayAnimal adoptedAnimal) {
-        this.adoptedAnimal = adoptedAnimal;
-    }
-
-    public LocalDate getAdoptionDate() {
-        return adoptionDate;
-    }
-
-    public void setAdoptionDate(LocalDate adoptionDate) {
-        this.adoptionDate = adoptionDate;
-    }
-
-    public void displayAdoptionInfo() {
-        System.out.println("Adoption Record:");
-        System.out.println("Adopter Name: " + adopterName);
-        System.out.println("Animal Adopted: " + adoptedAnimal.getName() + " (" + adoptedAnimal.getSpecies() + ")");
-        System.out.println("Adoption Date: " + adoptionDate);
+    public void adoptionInfo() {
+        System.out.println("Adopter: " + adopterName + " adopted " + animal.getName() + " the " + animal.getType());
     }
 }
