@@ -77,6 +77,7 @@ CREATE TABLE donations (
     donor_name VARCHAR(255),
     amount DECIMAL(10, 2)
 );
+```
 
 ##Installation & Setup
 1. Clone the Repository:
